@@ -1,0 +1,213 @@
+﻿@model BBMSASP.Core.Models.DonorModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Profile">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            <input type="hidden" asp-for="DonorId" />
+            @{
+                string type = "";
+                if (ViewBag.Type == "Success")
+                {
+                    type = "success";
+                }
+                else
+                {
+                    type = "danger";
+                }
+            }
+            @if (ViewBag.Message != "")
+            {
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="alert alert-@type">
+                            @ViewBag.Message
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="form-group row">
+                <label asp-for="UserName" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <input asp-for="UserName" readonly class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="DonorName" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <input asp-for="DonorName" class="form-control" />
+                    <span asp-validation-for="DonorName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Email" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Status" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <select asp-for="Status" asp-items="@(new SelectList(ViewBag.StatusList,"Status","Status"))" class="form-control">
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Gender" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    Male <input asp-for="Gender" checked type="radio" value="Male" />
+                    Female <input asp-for="Gender" type="radio" value="Female" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="BloodGroupId" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <select asp-for="BloodGroupId" class="form-control" asp-items="@(new SelectList(ViewBag.BloodGroupList,"BloodGroupId","GroupName"))">
+                        <option value="">--- Select Blood Group ---</option>
+                    </select>
+                    <span asp-validation-for="BloodGroupId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="DateOfBirth" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <input asp-for="DateOfBirth" id="txtDateDOB" placeholder="dd-MM-yyyy" type="text" class="form-control" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="ContactNumber" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <input asp-for="ContactNumber" class="form-control" />
+                    <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LastDonationDate" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <input asp-for="LastDonationDate" placeholder="dd-MM-yyyy" type="text" id="txtDonaateDate" class="form-control" />
+                    <span asp-validation-for="LastDonationDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="DivisionId" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <select asp-for="DivisionId" id="division" class="form-control" asp-items="@(new SelectList(ViewBag.DivisionList,"DivisionId","DivisionName"))">
+                        <option value="">--- Select Division ---</option>
+                    </select>
+                    <span asp-validation-for="DivisionId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="DistrictId" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <select asp-for="DistrictId" id="district" class="form-control" asp-items="@(new SelectList(ViewBag.DistrictList,"DistrictId","DistrictName"))">
+                        <option value="">--- Select Division ---</option>
+                    </select>
+                    <span asp-validation-for="DistrictId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="UpazilaId" class="col-sm-3"></label>
+                <div class="col-sm-9">
+                    <select asp-for="UpazilaId" id="upazila" class="form-control" asp-items="@(new SelectList(ViewBag.UpazilaList,"UpazilaId","UpazilaName"))">
+                        <option value="">--- Select Upazila ---</option>
+                    </select>
+                    <span asp-validation-for="UpazilaId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <input type="submit" value="Update" class="btn btn-success btn-block" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        //Insert default item "Select" in dropdownlist on load
+        //$(document).ready(function () {
+        //    var divisionId = $("#division").val();
+        //    LoadDistrict(divisionId);
+        //    var items = "<option value=''>--- Select Upazila ---</option>";
+        //    //$("#district").html("<option value=''>---Select District---</option>");
+        //    $("#upazila").html(items);
+        //});
+        function LoadDistrict(divisionId) {
+            var items = "<option value=''>--- Select District ---</option>";
+            var url = "/Home/GetDistrict";
+            $.getJSON(url, { DivisionId: divisionId }, function (data) {
+                var item = "";
+                $("#district").empty();
+                item = "<option value=''>--- Select District ---</option>";
+                $.each(data, function (i, district) {
+                    item += '<option value="' + district.value + '">' + district.text + '</option>'
+                });
+                $("#district").html(item);
+            });
+            items = "<option value=''>--- Select Upazila---</option>";
+            $("#upazila").html(items);
+        }
+        function LoadUpazila(districtId) {
+            var url = "/Home/GetUpazila";
+            $.getJSON(url, { DistrictId: districtId }, function (data) {
+                var item = "";
+                $("#upazila").empty();
+                item = "<option value=''>--- Select Upazila---</option>";
+                $.each(data, function (i, upazila) {
+                    item += '<option value="' + upazila.value + '">' + upazila.text + '</option>'
+                });
+                $("#upazila").html(item);
+            });
+        }
+        //Bind district dropdownlist
+        $("#division").change(function () {
+            //var items = "<option value='0'>Select</option>";
+            var divisionId = $("#division").val();
+            LoadDistrict(divisionId);
+            //var districtId = $("#district").val();
+            //LoadUpazila(districtId);
+
+        });
+        //Bind upazila dropdownlist
+        $("#district").change(function () {
+            var districtId = $("#district").val();
+            LoadUpazila(districtId);
+        });
+        $(function () {
+            $("#txtDateDOB").datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+            }
+            );
+        });
+        $(function () {
+            $("#txtDonaateDate").datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+            }
+            );
+        });
+    </script>
+
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

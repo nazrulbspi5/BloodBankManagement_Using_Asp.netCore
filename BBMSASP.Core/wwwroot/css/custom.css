@@ -1,0 +1,208 @@
+﻿#navigation .navbar {
+    background: #d93243;
+    border-radius: 0;
+    border-bottom: 0;
+    box-shadow: rgb(0 0 0 / 30%) 0px 0px 3px;
+    padding-bottom: 8px;
+}
+
+#navigation .navbar-inverse .navbar-nav .active a, #navigation .navbar-inverse .navbar-nav .active a:focus, #navigation .navbar-nav.navbar-right li a:hover {
+    color: #000;
+    background-color: #ffffff;
+}
+
+#navigation .navbar-nav.navbar-right li a {
+    color: #ffffff;
+    font-family: 'Roboto',sans-serif;
+    font-size: 14px;
+    padding: 0;
+    text-transform: uppercase;
+    -webkit-transition: all .9s ease 0s;
+    -moz-transition: all .9s ease 0s;
+    -o-transition: all .9s ease 0s;
+    transition: all .9s ease 0s;
+    padding: 6px 15px;
+}
+
+.slider-btn {
+    background-color: #d93243;
+    color: #FFF;
+    -webkit-box-shadow: inset 0 0 0 2px #fc7700;
+    box-shadow: inset 0 0 0 2px #fc7700;
+    text-transform: uppercase;
+    width: 232px;
+    text-align: center;
+    height: 55px;
+    line-height: 55px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 800;
+    border: 0;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+    .slider-btn:hover {
+        background-color: #43484E;
+        -webkit-box-shadow: inset 0 0 0 2px #43484e;
+        box-shadow: inset 0 0 0 2px #43484e;
+        color: #fff;
+    }
+#contact-form-section .btn-primary {
+    background-color: #b20000;
+    border-color: #f6f6f6;
+    border-radius: 0;
+    padding: 10px 35px;
+    text-transform: uppercase;
+    font-weight: 800;
+    transition: all 0.9s ease 0s;
+    -moz-transition: all 0.9s ease 0s;
+    -webkit-transition: all 0.9s ease 0s;
+    -o-transition: all 0.9s ease 0s;
+}
+
+element.style {
+}
+
+#login-form-section {
+    padding: 35px;
+    background-color: #f6f6f6;
+    height: 450px;
+    margin: 80px auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 16px 0px;
+}
+
+.card {
+    background-color: #f6f6f6;
+    border-radius: 10px 10px 10px 10px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    box-shadow: 0px 0px 16px 0px;
+}
+
+.card-content {
+    padding: 15px;
+    overflow:hidden;
+}
+ select {
+  cursor:pointer
+}
+.card-heading {
+    background: #d93243;
+    display: block;
+    padding: 5px;
+    color: #fff;
+    border-radius: 10px 10px 0px 0px;
+    text-align:center;
+}
+
+
+#register-form-section {
+    padding: 35px;
+    background-color: #f6f6f6;
+    height: 450px;
+    margin: 80px auto;
+    border-radius: 10px;
+}
+
+#footer {
+    background-color: #f6f6f6;
+    padding: 25px 0;
+    color: #43484E;
+    font-size: 16px;
+    position: relative;
+}
+
+.avatar {
+    text-align: center;
+}
+
+    .avatar img {
+        border-radius: 50%;
+        width: 90px;
+    }
+
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+
+.heading {
+    background: #d93243;
+    display: flex;
+    padding: 5px;
+    color: #fff;
+    /* text-align: center; */
+    border-radius: 10px;
+}
+.register-hints p {
+    font-size: 18px;
+    line-height: 33px;
+}
+.donor-card {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    transition: 0.3s;
+    background: #2c3e50;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+}
+    .donor-card h4 {
+        color: #ff902e;
+        font-size: 25px;
+        text-transform:uppercase;
+        /* font-weight: bold; */
+    }
+    /* On mouse-over, add a deeper shadow */
+    .donor-card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+/* Add some padding inside the card container */
+.donor-container {
+    padding: 2px 16px;
+}
+.container-fluid {
+    overflow: hidden;
+}
+table.ui-datepicker-calendar thead {
+    background: #7e81c6;
+    color: #fff;
+}
+.mb20 {
+    margin-bottom: 20px;
+}
+.bg-info {
+    background-color: #17a2b8 !important;
+}
+.bg-success {
+    background-color: #28a745 !important;
+}
+.bg-warning {
+    background-color: #ffc107 !important;
+}
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+.small-box .icon {
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    position: absolute;
+    top: 30px !important;
+    right: 36px !important;
+    z-index: 0;
+    font-size: 106px;
+    color: #fff;
+}
+.small-box {
+    border-radius: 2px;
+    height: 100px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+}

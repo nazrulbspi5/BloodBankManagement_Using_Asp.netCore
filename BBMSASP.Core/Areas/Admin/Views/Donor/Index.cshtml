@@ -1,0 +1,92 @@
+﻿@model IEnumerable<BBMSASP.Core.Models.DonorModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<table id="tableDonors" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+
+            <th>
+                Full Name
+            </th>
+            <th>
+                Email
+            </th>
+           
+            
+            <th>
+                @Html.DisplayNameFor(model => model.BloodGroup)
+            </th>
+           
+            <th>
+                Contact Number
+            </th>
+            <th>
+                Last Donation Date
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Divisions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Districts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Upazilas)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.BloodGroup.GroupName)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNumber)
+                </td>
+                <td>
+                    @Convert.ToDateTime(item.LastDonationDate).ToString("dd-MM-yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Divisions.DivisionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Districts.DistrictName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Upazilas.UpazilaName)
+                </td>
+                <td>
+                    <partial name="_ButtonPartial" model="@item.DonorId" />
+                    @*<a asp-action="Edit" asp-route-id="@item.DonorId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.DonorId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DonorId">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        $(function () {
+            $("#tableDonors").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            
+        });</script>
+}

@@ -1,0 +1,57 @@
+﻿@page "/Login"
+@model LoginModel
+
+
+<h1>@ViewData["Title"]</h1>
+@*<div class="pattern clearfix"></div>*@
+
+    <div class="row">
+
+        <div class="col-sm-4 col-sm-offset-4">
+            <div id="login-form-section">
+                <form id="account" method="post">
+                    @*<h2 class="text-center">Log in</h2>*@
+                    <div class="avatar">
+                        <img src="~/images/img_avatar.png" />
+                       
+                    </div>
+                    <hr />
+                    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                    <div class="form-group">
+                        <label asp-for="Input.UserName"></label>
+                        <input asp-for="Input.UserName" placeholder="User Name" class="form-control mail-field" />
+                        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" placeholder="Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label asp-for="Input.RememberMe">
+                                <input asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-danger btn-block">Log in</button>
+                    </div>
+                    <div class="form-group">
+                        <p style="float:left">
+                            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        </p>
+                        <p style="float:right">
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

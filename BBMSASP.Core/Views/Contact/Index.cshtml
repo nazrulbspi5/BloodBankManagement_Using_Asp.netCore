@@ -1,0 +1,49 @@
+﻿@model ContactUS
+<section id="contact">
+    <div class="container">
+        <div class="row text-center clearfix">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="contact-heading">
+                    <h2 class="title-one">Contact With Us</h2>
+                    @*<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="contact-details">
+            <div class="pattern clearfix"></div>
+            <div class="row text-center clearfix">
+                <div class="col-sm-6">
+                    <div class="contact-address">
+                        <address><p><span>CTG</span> BLOOD BANK</p><strong>West Shewrapara<br>Shamim Sharani, Mirpur<br> Dhaka-1216, Bangladesh</strong><br><small></small></address>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a><a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div id="contact-form-section">
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <form id="contact-form" class="contact" method="post" asp-action="Index">
+                            <div class="form-group">
+                                <input type="text" asp-for="Name" name="name" class="form-control name-field" required="required" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" asp-for="Email" name="email" class="form-control mail-field" required="required" placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" asp-for="Message" id="message" required="required" class="form-control" rows="8" placeholder="Message"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--/#contact-->

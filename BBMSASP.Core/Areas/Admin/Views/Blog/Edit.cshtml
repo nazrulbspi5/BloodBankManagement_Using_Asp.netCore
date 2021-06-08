@@ -1,0 +1,54 @@
+﻿@model BBMSASP.Core.Models.BlogModel
+
+@{
+    ViewData["Title"] = "Edit Blog";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            <input type="hidden" asp-for="BlogId" />
+            <div class="form-group">
+                <label asp-for="BlogTitle" class="control-label"></label>
+                <input asp-for="BlogTitle" class="form-control" />
+                <span asp-validation-for="BlogTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogContent" class="control-label"></label>
+                <textarea asp-for="BlogContent" rows="8" class="form-control"></textarea>
+                <span asp-validation-for="BlogContent" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="PostDate" class="control-label"></label>
+                <input asp-for="PostDate" type="text" id="txtDate" class="form-control" />
+                <span asp-validation-for="PostDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntryBy" class="control-label"></label>
+                <input asp-for="EntryBy" class="form-control" />
+                <span asp-validation-for="EntryBy" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section scripts{ 
+<script>
+    $(function () {
+        $("#txtDate").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+        }
+        );
+    });
+</script>
+}

@@ -1,0 +1,121 @@
+﻿@model IEnumerable<BBMSASP.Core.Models.RequestModel>
+
+@{
+    ViewData["Title"] = "Blood Request";
+}
+
+
+<table id="tableDonation" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BloodGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Divisions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Districts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Upazilas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiredDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BloodUnit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HospitalName)
+            </th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+            }
+
+            @*<th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BloodGroup.GroupName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Divisions.DivisionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Districts.DistrictName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Upazilas.UpazilaName)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.RequiredDate)*@
+                    @Convert.ToDateTime(item.RequiredDate).ToString("dd-MM-yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BloodUnit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HospitalName)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+
+                        @if (item.Status == "Pending")
+                        {
+                        <a asp-action="Approved" asp-route-id="@item.RequestId" asp-area="Admin" asp-controller="BloodRequest" class="btn btn-primary">Approve</a>
+                        <a asp-action="Reject" asp-route-id="@item.RequestId" class="btn btn-danger">Reject</a>
+                        }
+                        else if (item.Status == "Approved")
+                        {
+                        <span class="btn btn-success">Approved</span>
+                        }
+                        else if (item.Status == "Reject")
+                        {
+                        <span class="btn btn-warning">Rejected</span>
+                        }
+
+
+                        @*@if (User.IsInRole("Donor"))
+                            {
+                                <a asp-action="Accept" asp-route-id="@item.RequestId" class="btn btn-success">Accept</a>
+                            }*@
+
+                        @*<a asp-action="Edit" asp-route-id="@item.RequestId" class="btn btn-success">Accept</a>*@
+
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        $(function () {
+            $("#tableDonation").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+
+        });</script>
+}

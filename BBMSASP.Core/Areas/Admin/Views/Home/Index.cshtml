@@ -1,0 +1,187 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+@model BBMSASP.Core.Areas.Admin.Models.DonorCounterModel
+
+@inject BBMSASP.Core.Areas.Admin.Services.IProfileService donorProfile
+@*<h1>
+        Welocme To admin panel @if (User.Identity.IsAuthenticated)
+        {
+            @User.Identity.Name;
+        }
+    </h1>*@
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>@Model.APositive</h3>
+                </div>
+                <div class="icon">
+                    <h3>A+</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>@Model.BPositive</h3>
+                </div>
+                <div class="icon">
+                    <h3>B+</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>@Model.ABPositive</h3>
+
+                </div>
+                <div class="icon">
+                    <h3>AB+</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3>@Model.OPositive</h3>
+                </div>
+                <div class="icon">
+                    <h3>O+</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>@Model.ANegative</h3>
+                </div>
+                <div class="icon">
+                    <h3>A-</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>@Model.BNegative</h3>
+                </div>
+                <div class="icon">
+                    <h3>B-</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>@Model.ABNegative</h3>
+
+                </div>
+                <div class="icon">
+                    <h3>AB-</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3>@Model.ONegative</h3>
+                </div>
+                <div class="icon">
+                    <h3>O-</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-4">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>@Model.TotalDonor</h3>
+                </div>
+                <div class="icon">
+                    <h3>Total Donors</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-4">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>@Model.TotalRequest</h3>
+                </div>
+                <div class="icon">
+                    <h3>Total Request</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-4">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>@Model.PendingRequest</h3>
+                </div>
+                <div class="icon">
+                    <h3>Pending Request</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+@if (User.IsInRole("Donor"))
+{
+    <div class="row">
+        <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>@Model.TotalRequest</h3>
+                </div>
+                <div class="icon">
+                    <h3>Total Request</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>@Model.TotalRequest</h3>
+                </div>
+                <div class="icon">
+                    <h3>Active Blood Request</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+}

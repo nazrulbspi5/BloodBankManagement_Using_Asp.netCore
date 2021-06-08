@@ -1,0 +1,50 @@
+﻿@model BBMSASP.Core.Models.DivisionModel
+
+@{
+    ViewData["Title"] = "Add Division";
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+          
+            @{
+                string type = "";
+                if (ViewBag.Type == "Success")
+                {
+                    type = "success";
+                }
+                else
+                {
+                    type = "danger";
+                }
+            }
+            @if (ViewBag.Message != "")
+            {
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="alert alert-@type">
+                            @ViewBag.Message
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                <label asp-for="DivisionName" class="control-label"></label>
+                <input asp-for="DivisionName" class="form-control" />
+                <span asp-validation-for="DivisionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

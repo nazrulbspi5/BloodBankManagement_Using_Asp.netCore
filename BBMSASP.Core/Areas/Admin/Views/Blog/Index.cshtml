@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BBMSASP.Core.Models.BlogModel>
+
+@{
+    ViewData["Title"] = "Blog List";
+}
+
+
+<p>
+    <a asp-action="Create" class="btn btn-success"><i class="fas fa-plus-circle"></i> Add New Blog</a>
+</p>
+<table id="tableBlog" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BlogTitle)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.BlogContent)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntryBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BlogTitle)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.BlogContent)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryBy)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.BlogId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.BlogId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.BlogId">Delete</a>*@
+                    <partial name="_ButtonPartial" model="@item.BlogId" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        $(function () {
+            $("#tableBlog").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+
+        });
+    </script>
+}

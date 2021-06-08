@@ -1,0 +1,77 @@
+﻿@model IEnumerable<BBMSASP.Core.Areas.Admin.Models.Donation>
+
+@{
+    ViewData["Title"] = "Donation History";
+}
+
+
+<p>
+    <a class="btn btn-success" asp-action="Donation"><i class="fas fa-plus-circle"></i> Add Blood Donation</a>
+</p>
+<table id="tableDonation" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DonationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimesOfDonation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Convert.ToDateTime(item.DonationDate).ToString("dd-MMM-yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimesOfDonation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @*<partial name="_ButtonPartial" model="@item.DonationId" />*@
+                    @*<a asp-action="Edit" asp-route-id="@item.DonationId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.DonationId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.DonationId">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.12.0/build/alertify.min.js"></script>
+    <script>
+        $(function () {
+            $("#tableDonation").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+
+        });
+        $(function () {
+            var save = '@TempData["saved"]'
+            if (save != "") {
+          Swal.fire(
+                '@TempData["saved"]',
+                'You clicked the button!',
+                'success'
+            )
+            }
+
+
+        });
+
+    </script>
+
+
+}

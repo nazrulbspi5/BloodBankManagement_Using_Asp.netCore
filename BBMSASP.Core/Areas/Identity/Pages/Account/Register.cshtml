@@ -1,0 +1,244 @@
+﻿@page "/donor-register"
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+
+
+    <div class="col-md-5 col-sm-offset-1">
+
+        <div class="card">
+            <div class="card-heading"><h4>JOIN AS BLOOD DONOR</h4></div>
+            <div class="card-content">
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    @*<div class="panel panel-default">*@
+                    @{
+                        string type = "";
+                        if (Model.Type == "Success")
+                        {
+                            type = "success";
+                        }
+                        else
+                        {
+                            type = "danger";
+                        }
+                    }
+                    @if (Model.Message != "")
+                    {
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="alert alert-@type">
+                                    @Model.Message
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                    <div class="form-group row">
+                        <label asp-for="Input.UserName" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            @*@Html.EditorFor(model => model.Input.UserName, new { htmlAttributes = new { @class = "form-control" } })*@
+                            <input asp-for="Input.UserName" placeholder="User Name" class="form-control" />
+                            <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.Password" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Input.Password" placeholder="Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.ConfirmPassword" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Input.ConfirmPassword" placeholder="Confirm Password" class="form-control" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Input.DonorName" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Input.DonorName" placeholder="Full Name" class="form-control" />
+                            <span asp-validation-for="Input.DonorName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.Email" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Input.Email" placeholder="Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.Status" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <select asp-for="Input.Status" asp-items="@(new SelectList(Model.StatusList,"Status","Status"))" class="form-control">
+                            </select>
+                            <span asp-validation-for="Input.Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.Gender" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            Male <input asp-for="Input.Gender" checked type="radio" value="Male" />
+                            Female <input asp-for="Input.Gender" type="radio" value="Female" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.BloodGroupId" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <select asp-for="Input.BloodGroupId" class="form-control" asp-items="@(new SelectList(Model.BloodGroupList,"BloodGroupId","GroupName"))"></select>
+                            <span asp-validation-for="Input.BloodGroupId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.DateOfBirth" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Input.DateOfBirth" placeholder="dd-MM-yyyy" id="txtDateDOB" type="text" class="form-control" />
+                            <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.ContactNumber" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Input.ContactNumber" placeholder="Contact Number" class="form-control" />
+                            <span asp-validation-for="Input.ContactNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.LastDonationDate" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Input.LastDonationDate" type="text" placeholder="dd-MM-yyyy" id="txtDonaateDate" class="form-control" />
+                            <span asp-validation-for="Input.LastDonationDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.DivisionId" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <select asp-for="Input.DivisionId" id="division" class="form-control" asp-items="@(new SelectList(Model.DivisionList,"DivisionId","DivisionName"))">
+                                <option value="">--- Select Division ---</option>
+                            </select>
+                            <span asp-validation-for="Input.DivisionId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.DistrictId" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <select asp-for="Input.DistrictId" id="district" class="form-control" asp-items="@(new SelectList(string.Empty,"DistrictId","DistrictName"))"></select>
+                            <span asp-validation-for="Input.DistrictId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Input.UpazilaId" class="col-sm-3"></label>
+                        <div class="col-sm-9">
+                            <select asp-for="Input.UpazilaId" id="upazila" class="form-control" asp-items="@(new SelectList(string.Empty,"UpazilaId","UpazilaName"))">
+                            </select>
+                            <span asp-validation-for="Input.UpazilaId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button type="submit" class="btn btn-danger btn-block">Register</button>
+                        </div>
+                    </div>
+                    @*</div>*@
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <section>
+            <h4><i class="fas fa-arrow-circle-right"></i> নির্দেশনা.</h4>
+            <hr />
+            <div class="register-hints">
+                <p class="text-danger">
+                    Required fields are indicated by an asterisk (*).
+                </p>
+                <p>
+                    Username এবং Password দিয়ে রক্তদাতা হিসাবে রেজিস্ট্রেশন করুন, এতে পরবর্তীতে আপনি আপনার একাউন্টে লগইন করে আপনার তথ্য যেমন রক্তদানের শেষ তারিখ, মোবাইল নম্বর, জেলা/এলাকা পরিবর্তন করতে পারবেন। দয়া করে রক্তদান শেষে রক্তদানের শেষ তারিখ আপডেট করুন। @*এই ওয়েবসাইটে রক্তদাতাদের নাম এবং পুরুষ/মহিলা এই তথ্য প্রকাশ করা হবে না।*@ মোবাইল নম্বর প্রকাশ করা হবে যেন রক্তের প্রয়োজনে রোগীরা সরাসরি রক্তদাতাদের সাথে যোগাযোগ করতে পারেন। রক্ত দিন, জীবন বাচান :)
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        //Insert default item "Select" in dropdownlist on load
+        $(document).ready(function () {
+            var divisionId = $("#division").val();
+            LoadDistrict(divisionId);
+            var items = "<option value=''>--- Select Upazila ---</option>";
+            //$("#district").html("<option value=''>---Select District---</option>");
+            $("#upazila").html(items);
+        });
+        function LoadDistrict(divisionId) {
+            var items = "<option value=''>--- Select District ---</option>";
+            var url = "/Home/GetDistrict";
+            $.getJSON(url, { DivisionId: divisionId }, function (data) {
+                var item = "";
+                $("#district").empty();
+                item = "<option value=''>--- Select District ---</option>";
+                $.each(data, function (i, district) {
+                    item += '<option value="' + district.value + '">' + district.text + '</option>'
+                });
+                $("#district").html(item);
+            });
+            items = "<option value=''>--- Select Upazila---</option>";
+            $("#upazila").html(items);
+        }
+        function LoadUpazila(districtId) {
+            var url = "/Home/GetUpazila";
+            $.getJSON(url, { DistrictId: districtId }, function (data) {
+                var item = "";
+                $("#upazila").empty();
+                item = "<option value=''>--- Select Upazila---</option>";
+                $.each(data, function (i, upazila) {
+                    item += '<option value="' + upazila.value + '">' + upazila.text + '</option>'
+                });
+                $("#upazila").html(item);
+            });
+        }
+        //Bind district dropdownlist
+        $("#division").change(function () {
+            //var items = "<option value='0'>Select</option>";
+            var divisionId = $("#division").val();
+            LoadDistrict(divisionId);
+            //var districtId = $("#district").val();
+            //LoadUpazila(districtId);
+
+        });
+        //Bind upazila dropdownlist
+        $("#district").change(function () {
+            var districtId = $("#district").val();
+            LoadUpazila(districtId);
+        });
+        $(function () {
+            $("#txtDateDOB").datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+            }
+            );
+        });
+        $(function () {
+            $("#txtDonaateDate").datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+            }
+            );
+        });
+    </script>
+   
+    <partial name="_ValidationScriptsPartial" />
+}

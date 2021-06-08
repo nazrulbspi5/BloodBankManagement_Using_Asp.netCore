@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative One Page Parallax Template">
+    <meta name="keywords" content="Creative, Onepage, Parallax, HTML5, Bootstrap, Popular, custom, personal, portfolio" />
+    <meta name="author" content="">
+    <title>CTG BLOOD BANK</title>
+
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/assets/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/assets/css/animate.css" rel="stylesheet">
+    <link href="~/assets/css/main.css" rel="stylesheet">
+    <link href="~/assets/css/responsive.css" rel="stylesheet">
+    <link href="~/css/custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!--[if lt IE 9]> <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script> <![endif]-->
+    <link rel="shortcut icon" href="~/assets/images/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/assets/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/assets/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/assets/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/assets/images/ico/apple-touch-icon-57-precomposed.png">
+
+
+
+    @*<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - BBMSASP.Core</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />*@
+</head>
+<body>
+    <div class="preloader">
+        <div class="preloder-wrap">
+            <div class="preloder-inner">
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+            </div>
+        </div>
+    </div><!--/.preloader-->
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BBMSASP.Core</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
+
+    <header id="navigation">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="~/"><h1>CTG BLOOD BANK</h1></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="scroll"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="scroll"><a asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a></li>
+                        <li class="scroll"><a asp-area="" asp-controller="Request" asp-action="Index">Blood Request</a></li>
+                        @*<li class="scroll"><a asp-area="" asp-controller="Team" asp-action="Index">Our Team</a></li>*@
+                        <li class="scroll"><a asp-area="" asp-controller="Search" asp-action="Index">Search Donor</a></li>
+                        @*<li class="scroll"><a href="#portfolio">Portfolio</a></li>*@
+                        @*<li class="scroll"><a href="#clients">Clients</a></li>*@
+                        <li class="scroll"><a asp-area="" asp-controller="Blog" asp-action="Index">Blog</a></li>
+                        <li class="scroll"><a asp-area="" asp-controller="Contact" asp-action="Index">Contact Us</a></li>
+                        <li class="scroll"><a href="/login">Login</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div><!--/navbar-->
+    </header> <!--/#navigation-->
+    @*<div class="container">*@
+    @*<main role="main" class="pb-3">*@
+    @RenderBody()
+    @*</main>*@
+    @*</div>*@
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - BBMSASP.Core - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    <footer id="footer">
+        <div class="container">
+            <div class="text-center">
+                <p>Copyright &copy; @DateTime.Now.Year - <a href="http://nazrul-islam.com/">Nazrul Islam</a> | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer> <!--/#footer-->
+    <script type="text/javascript" src="../assets/js/jquery.js"></script>
+    <script type="text/javascript" src="~/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/smoothscroll.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="../assets/js/main.js"></script>
+    <script src="https://kit.fontawesome.com/afe68e8b8e.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('.nav.navbar-nav.navbar-right').find('[href="' + window.location.pathname + '"]').parent().addClass('active')
+        });
+    </script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>*@
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

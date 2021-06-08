@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BBMSASP.Core.Models.DivisionModel>
+
+@{
+    ViewData["Title"] = "Division";
+}
+
+
+<p>
+    <a asp-action="Create" class="btn btn-success"><i class="fas fa-plus-circle"></i> Add New Division</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DivisionName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionName)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-info" asp-controller="Division" asp-area="Admin" asp-route-id="@item.DivisionId"><i class="fas fa-edit"></i></a>
+                @*<a asp-action="Delete" class="btn btn-danger" asp-controller="Division" asp-area="Admin" asp-route-id="@item.DivisionId"><i class="fas fa-trash-alt"></i></a>*@
+
+                <!--<a asp-action="Edit" asp-route-id="@item.DivisionId">Edit</a> |-->
+                @* <a asp-action="Details" asp-route-id="@item.DivisionId">Details</a> |*@
+                <!--<a asp-action="Delete" asp-route-id="@item.DivisionId">Delete</a>-->
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

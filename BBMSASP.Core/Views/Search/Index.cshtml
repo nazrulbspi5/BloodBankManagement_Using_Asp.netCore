@@ -1,0 +1,240 @@
+﻿@model DonorModel
+
+<section id="search">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-heading"><h4>SEARCH BLOOD DONOR</h4></div>
+                <div class="card-content">
+
+                    <form method="post">
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label asp-for="BloodGroupId" class="col-sm-3"></label>
+                                <div class="col-sm-9">
+                                    <select asp-for="BloodGroupId" id="ddlbloodGroup" class="form-control" asp-items="@(new SelectList(ViewBag.BloodGroupList,"BloodGroupId","GroupName"))">
+                                        <option value="0">--- All ---</option>
+                                    </select>
+                                    <span asp-validation-for="BloodGroupId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label asp-for="DivisionId" class="col-sm-3"></label>
+                                <div class="col-sm-9">
+                                    <select asp-for="DivisionId" id="ddldivisionId" class="form-control" asp-items="@(new SelectList(ViewBag.DivisionList,"DivisionId","DivisionName"))">
+                                        <option value="0">--- All Division ---</option>
+                                    </select>
+
+                                    <span asp-validation-for="DivisionId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label asp-for="DistrictId" class="col-sm-3"></label>
+                                <div class="col-sm-9">
+                                    <select asp-for="DistrictId" id="ddldistrictId" class="form-control" asp-items="@(new SelectList(string.Empty,"DistrictId","DistrictName"))"></select>
+                                    <span asp-validation-for="DistrictId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label asp-for="UpazilaId" class="col-sm-3"></label>
+                                <div class="col-sm-9">
+                                    <select asp-for="UpazilaId" id="ddlupazilaId" class="form-control" asp-items="@(new SelectList(string.Empty,"UpazilaId","UpazilaName"))">
+                                    </select>
+                                    <span asp-validation-for="UpazilaId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-12">
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-success btn-block">Search</button>
+                                    </div>
+                                </div>
+                            </div>*@
+
+
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-heading"><h4>BLOOD DONOR LIST</h4></div>
+                <div id="donorCard" class="card-content">
+                    @*<div class="col-md-3">
+                            <div class="donor-card">
+                                <div class="donor-container">
+                                    <h4><b>NAZRUL ISLAM</b></h4>
+                                    <p><b>Blood Group :</b> B+</p>
+                                    <p><b>Contact No. :</b> +8801840028377</p>
+                                    <p><b>Status :</b> Unavailable</p>
+                                    <p><b>Address :</b> Satkania, Chattagram.</p>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var bloodId = $("#ddlbloodGroup").val();
+            var divisionId = $("#ddldivisionId").val();
+            var districtId = $("#ddldistrictId").val();
+            var upazilaId = $("#ddlupazilaId").val();
+            LoadDistrict(divisionId);
+            var items = "<option value='0'>--- All Upazila ---</option>";
+            //$("#district").html("<option value=''>---Select District---</option>");
+            $("#ddlupazilaId").html(items);
+            LoadDonorDetails(bloodId, divisionId, districtId, upazilaId);
+
+        });
+        $("#ddlbloodGroup").change(function () {
+            var bloodId = $("#ddlbloodGroup").val();
+            var divisionId = $("#ddldivisionId").val();
+            var districtId = $("#ddldistrictId").val();
+            var upazilaId = $("#ddlupazilaId").val();
+            LoadDonorDetails(bloodId, divisionId, districtId, upazilaId);
+        });
+        //Bind district dropdownlist
+        $("#ddldivisionId").change(function () {
+            //var items = "<option value='0'>Select</option>";
+            var divisionId = $("#ddldivisionId").val();
+            LoadDistrict(divisionId);
+            var bloodId = $("#ddlbloodGroup").val();
+            var districtId = $("#ddldistrictId").val();
+            LoadUpazila(districtId);
+            var upazilaId = $("#ddlupazilaId").val();
+            LoadDonorDetails(bloodId, divisionId, districtId, upazilaId);
+            //var districtId = $("#district").val();
+
+
+        });
+        //Bind upazila dropdownlist
+        $("#ddldistrictId").change(function () {
+
+            var districtId = $("#ddldistrictId").val();
+            LoadUpazila(districtId);
+            var bloodId = $("#ddlbloodGroup").val();
+            var divisionId = $("#ddldivisionId").val();
+            var upazilaId = $("#ddlupazilaId").val();
+            LoadDonorDetails(bloodId, divisionId, districtId, upazilaId);
+
+        });
+        $("#ddlupazilaId").change(function () {
+            var bloodId = $("#ddlbloodGroup").val();
+            var divisionId = $("#ddldivisionId").val();
+            var districtId = $("#ddldistrictId").val();
+            var upazilaId = $("#ddlupazilaId").val();
+            LoadDonorDetails(bloodId, divisionId, districtId, upazilaId);
+
+        });
+        function LoadDonorDetails(bloodId, divisionId, districtId, upazilaId) {
+
+            //$("#myTable").show();
+            $("#donorCard").empty();
+            //var json = { bloodGroupId: bloodId, divisionId:divisionId};
+
+            $.ajax({
+                type: "POST",
+                url: '/Search/GetDonorDetails',
+                //contentType: "application/json; charset=utf-8",
+                //data: JSON.stringify(json),
+                data: { "bloodGroupId": bloodId, "divisionId": divisionId, "districtId": districtId, "upazilaId": upazilaId },
+                // data: "{ 'dLftOperand': '" + $('input[id$=tbLftOpd]').val()+"', 'dRtOperand': '" + $('input[id$=tbRtOpd]').val() + "' }",
+                success: function (data) {
+                    //console.log(data.DonorName);
+                    $.each(data, function (key, value) {
+                        //alert(value.donorName);
+                        var status="";
+
+                        if (value.status == "Donate blood.") {
+                            status = "Available";
+                        }
+                        else {
+                            status = "Unavailable";
+                        }
+                        var mobile = value.contactNumber;
+                        if (value.gender=="Female") {
+                            mobile = value.contactNumber.substring(0, 5) + " **** " + value.contactNumber.substring(9, 11);
+                        }
+                        $("#donorCard").append('<div class="col-md-3 mb20"><div class="donor-card"><div class="donor-container"><h4><b>' + value.donorName + '</b></h4><p><b>Blood Group :</b> ' + value.bloodGroup.groupName + '</p> <p><b>Contact No. :</b> ' + mobile + '</p><p><b>Status :</b> ' + status + '</p> <p><b>Address :</b> ' + value.upazilas.upazilaName + ', ' + value.districts.districtName + '</p></div></div></div>');
+                    });
+                }
+            });
+        }
+
+        function LoadDistrict(divisionId) {
+            $("#ddldistrictId").empty();
+            var item = "<option value='0'>--- All District ---</option>";
+            var url = "/Home/GetDistrict";
+            $.getJSON(url, { DivisionId: divisionId }, function (data) {
+                var item = "";
+                $("#ddldistrictId").empty();
+                item = "<option value='0'>--- All District ---</option>";
+                $.each(data, function (i, district) {
+                    item += '<option value="' + district.value + '">' + district.text + '</option>'
+                });
+                $("#ddldistrictId").html(item);
+            });
+            //item = "<option value='0'>--- All Upazila---</option>";
+            $("#ddldistrictId").html(item);
+        }
+        function LoadUpazila(districtId) {
+            $("#ddlupazilaId").empty();
+            var item = "<option value='0'>--- All Upazila---</option>";
+            var url = "/Home/GetUpazila";
+            $.getJSON(url, { DistrictId: districtId }, function (data) {
+
+                $("#ddlupazilaId").empty();
+                item = "<option value='0'>--- All Upazila---</option>";
+                $.each(data, function (i, upazila) {
+                    item += '<option value="' + upazila.value + '">' + upazila.text + '</option>'
+                });
+                $("#ddlupazilaId").html(item);
+            });
+            $("#ddlupazilaId").html(item);
+        }
+
+    </script>
+
+    @*<script>
+            $(document).ready(function () {
+                $("#ddlbloodGroup").change(function () {
+                //$("#myTable").hide();
+                var bloodId = $("#ddlbloodGroup").val();
+                var url = "/Search/GetDonorDetails";
+                $.getJSON(url, { bloodGroupId: bloodId }, function (data) {
+                    //var item = "";
+                    $("#donorCard").empty();
+                    $.each(data, function (i, value) {
+                        alert(value.DonorName);
+                        $("#donorCard").append('<div class="col-md-3"><div class="donor-card"><div class="donor-container"><h4><b>' + value.DonorName + '</b></h4></div></div></div>');
+                        //item += '<option value="' + district.value + '">' + district.text + '</option>'
+                    });
+                    //$("#district").html(item);
+                });
+                });
+            });
+        </script>*@
+    <partial name="_ValidationScriptsPartial" />
+}

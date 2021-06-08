@@ -1,0 +1,48 @@
+﻿@model BBMSASP.Core.Areas.Admin.Models.Donation
+
+@{
+    ViewData["Title"] = "Blood Donation";
+}
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Donation" asp-area="Admin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DonationDate" class="control-label"></label>
+                <input asp-for="DonationDate" id="txtDate" type="text" placeholder="yyyy-MM-dd" class="form-control" />
+                <span asp-validation-for="DonationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimesOfDonation" class="control-label"></label>
+                <input asp-for="TimesOfDonation" class="form-control" />
+                <span asp-validation-for="TimesOfDonation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts{ 
+<script type="text/javascript">
+    $(function () {
+        $("#txtDate").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+        }
+        );
+    });
+</script>
+}
+
